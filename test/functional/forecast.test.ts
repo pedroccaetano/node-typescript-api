@@ -21,7 +21,7 @@ describe('Beach forecast functional test', () => {
             windDirection: 299.45,
           },
         ],
-      },correctly
+      },
       {
         time: '2020-04-26T01:00:00+00:00',
         forecast: [
