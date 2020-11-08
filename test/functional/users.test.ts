@@ -12,7 +12,7 @@ describe('Users functional tests', () => {
         name: 'John Doe',
         email: 'john@mail.com',
         password: '1234',
-      };
+      }; 
 
       const response = await global.testRequest.post('/users').send(newUser);
 
