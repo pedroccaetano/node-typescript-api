@@ -40,6 +40,6 @@ jobs:
 
       - name: Deployment
         if: github.ref == 'refs/heads/master'
-        run: git remote add umbler https://kamino.deploy.umbler.com/jg20nglk/api-surf-com.git
+        run: git remote add umbler https://kamino.deploy.umbler.com/jg20nglk/api-surf-com.git && git push umbler master
         env:
           CI: true
