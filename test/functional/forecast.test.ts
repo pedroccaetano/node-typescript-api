@@ -16,7 +16,7 @@ describe('Beach forecast functional tests', () => {
   beforeEach(async () => {
     await Beach.deleteMany({});
     await User.deleteMany({});
-    const user = await new User(defaultUser).save();
+    const user = await new User(defaultUser).save(); 
 
     const defaultBeach = {
       lat: -33.792726,
