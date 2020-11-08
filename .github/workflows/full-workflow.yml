@@ -11,7 +11,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [12.13]
+        node-version: [12.x]
         mongodb-version: [4.2]
 
     steps:
