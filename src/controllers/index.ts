@@ -2,6 +2,7 @@ import { Response } from 'express';
 import mongoose from 'mongoose';
 import { CUSTOM_VALIDATION } from '@src/models/user';
 import logger from '@src/logger';
+import ApiError, { APIError } from '@src/util/errors/api-error';
 
 export abstract class BaseController {
   protected sendCreateUpdateErrorResponse(
@@ -12,13 +13,16 @@ export abstract class BaseController {
       const clientErros = this.handleClientErrors(error);
       res
         .status(clientErros.code)
-        .send({ code: clientErros.code, error: clientErros.error });
+        .send(ApiError.format({
+          code: clientErros.code, 
+          message: clientErros.error 
+        }));
     } else {
       logger.error(error);
-      res.status(500).send({
+      res.status(500).send(ApiError.format({
         code: 500,
-        error: 'Internal Server Error',
-      });
+        message: 'Internal Server Error',
+      }));
     }
   }
 
@@ -34,5 +38,9 @@ export abstract class BaseController {
     } else {
       return { code: 422, error: error.message };
     }
+  }
+
+  protected sendErrorResponse(res: Response, apiError: APIError): Response {
+    return res.status(apiError.code).send(ApiError.format(apiError))
   }
 }
