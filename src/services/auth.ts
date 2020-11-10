@@ -4,7 +4,7 @@ import config from 'config';
 import { User } from '@src/models/user';
 
 export interface DecodedUser extends Omit<User, '_id'> {
-  id: string
+  id: string;
 }
 
 export default class AuthService {
